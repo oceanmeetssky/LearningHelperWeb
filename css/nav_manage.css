@@ -1,0 +1,345 @@
+﻿/*把原HTML中的p部分替换成正式的内容，css全部引用，看效果，再一步步找到js、bootstrap的css样式等，最后修改其它样式*/
+body {
+  position: relative;
+  overflow-x: hidden;
+  font-size:20px;
+}
+body,
+html {
+    height:100%;
+    /*background: #50a3a2;
+    background: -webkit-linear-gradient(top left, #53e3a6 0%, #50a3a2 100%);
+    background: linear-gradient(to bottom right, #53e3a6 0%, #50a3a2 100%);*/
+  background-image: linear-gradient(-225deg, #39F3BB  0%, #90F9C4 48%, #DFFFCD 100%);
+  opacity: 0.9;
+}
+.nav .open > a {
+  background-color: transparent;
+}
+.nav .open > a:hover {
+  background-color: transparent;
+}
+.nav .open > a:focus {
+  background-color: transparent;
+}
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+#wrapper {
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  padding-left: 0;
+  transition: all 0.5s ease;
+}
+#wrapper.toggled {
+  padding-left: 220px;
+}
+#wrapper.toggled #sidebar-wrapper {
+  width: 220px;
+}
+#wrapper.toggled #page-content-wrapper {
+  margin-right: -220px;
+  position: absolute;
+}
+/*id实现覆盖class*/
+#sidebar-wrapper {
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  background: #1a1a1a;
+  height: 100%;
+  left: 220px;
+  margin-left: -220px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all 0.5s ease;
+  width: 0;
+  z-index: 1000;
+}
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+#page-content-wrapper {
+  padding-top: 70px;
+  width: 100%;
+}
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 220px;
+}
+.sidebar-nav li {
+  display: inline-block;
+  line-height: 20px;
+  position: relative;
+  width: 100%;
+}
+.sidebar-nav li:before {
+  background-color: #1c1c1c;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+  width: 3px;
+  z-index: -1;
+}
+/*一级导航栏颜色*/
+.sidebar-nav li:first-child a {
+  background-color: #42d598;/*翠绿色1*/
+  color: #ffffff;
+}
+/*导航li项hover颜色*/
+.sidebar-nav li:nth-child(n):before {
+  background-color: #7ed598;/*翠绿色2*/
+}
+
+.sidebar-nav li:hover:before {
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+  width: 100%;
+}
+.sidebar-nav li a {
+  color: #dddddd;
+  display: block;
+  padding: 10px 15px 10px 30px;
+  text-decoration: none;
+}
+.sidebar-nav li.open:hover before {
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+  width: 100%;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus {
+  background-color: transparent;
+  color: #ffffff;
+  text-decoration: none;
+}
+.sidebar-nav > .sidebar-brand {
+  font-size: 20px;
+  height: 65px;
+  line-height: 44px;
+}
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+.hamburger {
+  background: transparent;
+  border: none;
+  display: block;
+  height: 32px;
+  margin-left: 15px;
+  position: fixed;
+  top: 20px;
+  width: 32px;
+  z-index: 999;
+}
+.hamburger:hover {
+  outline: none;
+}
+.hamburger:focus {
+  outline: none;
+}
+.hamburger:active {
+  outline: none;
+}
+.hamburger.is-closed:before {
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.35s ease-in-out;
+  color: #ffffff;
+  content: '';
+  display: block;
+  font-size: 14px;
+  line-height: 32px;
+  opacity: 0;
+  text-align: center;
+  width: 100px;
+}
+.hamburger.is-closed:hover before {
+  -webkit-transform: translate3d(-100px, 0, 0);
+  -webkit-transition: all 0.35s ease-in-out;
+  display: block;
+  opacity: 1;
+}
+.hamburger.is-closed:hover .hamb-top {
+  -webkit-transition: all 0.35s ease-in-out;
+  top: 0;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+  -webkit-transition: all 0.35s ease-in-out;
+  bottom: 0;
+}
+.hamburger.is-closed .hamb-top {
+  -webkit-transition: all 0.35s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.7);
+  top: 5px;
+}
+.hamburger.is-closed .hamb-middle {
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: -2px;
+  top: 50%;
+}
+.hamburger.is-closed .hamb-bottom {
+  -webkit-transition: all 0.35s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.7);
+  bottom: 5px;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  height: 4px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.hamburger.is-open .hamb-top {
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+  background-color: #ffffff;
+  margin-top: -2px;
+  top: 50%;
+}
+.hamburger.is-open .hamb-middle {
+  background-color: #ffffff;
+  display: none;
+}
+.hamburger.is-open .hamb-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.73, 1, 0.28, 0.08);
+  background-color: #ffffff;
+  margin-top: -2px;
+  top: 50%;
+}
+.hamburger.is-open:before {
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.35s ease-in-out;
+  color: #ffffff;
+  content: '';
+  display: block;
+  font-size: 14px;
+  line-height: 32px;
+  opacity: 0;
+  text-align: center;
+  width: 100px;
+}
+.hamburger.is-open:hover before {
+  -webkit-transform: translate3d(-100px, 0, 0);
+  -webkit-transition: all 0.35s ease-in-out;
+  display: block;
+  opacity: 1;
+}
+/*-------------------------------*/
+/*          Dark Overlay         */
+/*-------------------------------*/
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/*以下为自定义部分，和manage.css基本相同*/
+#my_content_style { 
+    width:100%;
+    margin-left:0;
+}
+h2 { 
+    text-align:center;   
+}
+
+/*table、a 等标签实现覆盖自带的grid view 样式*/
+table { 
+    background-color:rgba(255, 255, 255, 0.1);
+    text-align:center;
+    width:60%;
+    margin-left:20%;
+    /*想尽办法挽回margin的无效，但一个个设置又有效了*/
+    table-layout:fixed;/*单元格自动平均分配宽度，也顺带解决了底部页码混乱的问题*/
+    text-align:center;
+}
+/*为了尽可能把相同的样式写在一起，
+      所以对于学生和老师两个页面用优先级更高的class来处理宽度过窄的问题,但table的样式仍然会继承*/   
+.widertable { 
+    width:80%;
+    margin-left:10%;   
+}
+.widesttable { 
+    width:100%;
+    margin-left:0;
+    /*此处并不规范，老师表邮箱的长度过长则无法适应*/ 
+     /*本为了尽量避免换行，宽度不固定，
+       但因为td的padding值，按编辑之后表格会被撑大*/ 
+}
+    tr:nth-child(odd){background:rgba(255, 255, 255, 0.3)}
+    /*伪类实现隔行变色，odd 是奇数行，even偶数行
+        但会在原有的颜色上叠加，如页码部分又嵌套了一个表格，第一行背景色又是深色，
+        所以能看到该表格内的背景色更深一层*/
+    th { 
+        padding-top:7px;
+        padding-bottom:7px;
+        text-align:center;/*覆盖bootstrap*/
+    }
+    td { 
+        padding-top:5px;
+        padding-bottom:5px;
+        background-color:transparent;
+        word-wrap:break-word;/*自动换行，*/
+    }
+    
+        a { 
+            /*清除a标签的样式*/
+            text-decoration:none;
+            color:black;/*覆盖bootstrap*/
+            padding-left:20px;
+            padding-right:20px;
+            padding-top:5px;
+            padding-bottom:5px;
+        }
+            a:hover { 
+                /*background-color:rgba(255, 255, 255, 0.5);*/
+                font-weight:900;
+                color:black;/*清bootstrap样式*/
+                text-decoration:none;
+            }/*hover效果突出超链接功能，而且因为放大加粗，会抖，待解决*/
+input { 
+    background-color:rgba(255, 255, 255, 0.7);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /*清除默认样式*/
+    outline:0;/*清除轮廓*/
+    width:100%;/*填满整个单元格*/
+    height:100%;
+    font-size:20px;
+    border-radius:10px;
+    border:0px solid #c8cccf;
+    text-align:center;
+    padding:0;/*清除默认的padding值，但因为td设置了padding值，所以无法填满单元格*/
+}/*有的页面有编辑按钮*/
+    input:focus { 
+        background-color: white;
+        color: #53e3a6; 
+    }

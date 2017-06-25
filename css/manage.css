@@ -1,0 +1,100 @@
+﻿/*  对应于manage_ 开头的页面，参照welcome.css加上wrapper即还原*/
+/*被nav_manage.css替换*/
+.* { 
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    color: black;
+    font-weight: 400;
+    font-size:20px;
+}
+
+.wrapper { 
+    background: #50a3a2;
+    background: -webkit-linear-gradient(top left, #53e3a6 0%, #50a3a2 100%);
+    background: linear-gradient(to bottom right, #53e3a6 0%, #50a3a2 100%);
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+h2 { 
+    margin-top:40px;
+    text-align:center;   
+}
+
+/*table、a 等标签实现覆盖自带的grid view 样式*/
+table { 
+    background-color:rgba(255, 255, 255, 0.1);
+    text-align:center;
+    width:60%;
+    margin-left:20%;
+    /*想尽办法挽回margin的无效，但一个个设置又有效了*/
+    table-layout:fixed;/*单元格自动平均分配宽度，也顺带解决了底部页码混乱的问题*/
+}
+/*为了尽可能把相同的样式写在一起，
+      所以对于学生和老师两个页面用优先级更高的class来处理宽度过窄的问题*/   
+.widertable { 
+    width:80%;
+    margin-left:10%;   
+}
+.widesttable { 
+    width:90%;
+    margin-left:5%;
+    /*此处并不规范，老师表邮箱的长度过长则无法适应*/ 
+     /*本为了尽量避免换行，宽度不固定，
+       但因为td的padding值，按编辑之后表格会被撑大*/ 
+}
+    tr:nth-child(odd){background:rgba(255, 255, 255, 0.3)}
+    /*伪类实现隔行变色，odd 是奇数行，even偶数行
+        但会在原有的颜色上叠加，如页码部分又嵌套了一个表格，第一行背景色又是深色，
+        所以能看到该表格内的背景色更深一层*/
+    th { 
+        padding-top:7px;
+        padding-bottom:7px;
+    }
+        td { 
+            padding-top:5px;
+            padding-bottom:5px;
+            background-color:transparent;
+            word-wrap:break-word;/*自动换行，*/
+        }
+    
+            a { 
+                /*清除a标签的样式*/
+                text-decoration:none;
+                color:black;
+                padding-left:20px;
+                padding-right:20px;
+                padding-top:5px;
+                padding-bottom:5px;           
+            }
+                a:hover { 
+                    font-weight:900;
+                }/*hover效果突出超链接功能，而且因为放大加粗，会抖，待解决*/
+
+/*有的页面有编辑按钮*/
+input { 
+    background-color:rgba(255, 255, 255, 0.7);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /*清除默认样式*/
+    outline:0;/*清除轮廓*/
+    width:100%;/*填满整个单元格*/
+    height:100%;
+    font-size:20px;
+    border-radius:10px;
+    border:0px solid #c8cccf;
+    text-align:center;
+    padding:0;/*清除默认的padding值，但因为td设置了padding值，所以无法填满单元格*/
+}
+    input:focus { 
+        background-color: white;
+        color: #53e3a6; 
+    }

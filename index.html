@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>学习助手网页端管理系统</title>
+    <meta charset="utf-8" />
+    <script src="calender.js"></script>
+    <link href="css/index.css" rel="stylesheet" />
+    <link rel="icon" href="img/middle-school.png" />
+</head>
+<body onload="showcale();">
+    <h1 style="text-align: center">欢迎使用</h1>
+    <center>
+    <div class="calender">
+        <div class="cheader"><h1 id="c_header"></h1></div>
+        <div class="container"><p id="c_container"></p></div>
+    </div>
+    <button class="button1" onclick="forward();"><span>登录</span></button>
+    </center>
+    <script>
+        function forward() {
+            window.location.href = "login.aspx"
+        }
+    </script>
+</body>
+</html>

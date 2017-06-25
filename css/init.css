@@ -1,0 +1,96 @@
+﻿/*  对应于init_ 开头的页面,被nav_init.css替换*/
+/* 需要保留grid view的样式*/
+.* { 
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    color: black;
+    font-weight: 400;
+    font-size:20px;
+}
+
+.wrapper { 
+    background: #50a3a2;
+    background: -webkit-linear-gradient(top left, #53e3a6 0%, #50a3a2 100%);
+    background: linear-gradient(to bottom right, #53e3a6 0%, #50a3a2 100%);
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+h2 { 
+    margin-top:40px;
+    text-align:center;   
+}
+
+.center { 
+    text-align:center;
+    width:50%;
+    margin-left:25%;
+}
+
+#FileUpload1 { 
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: none;
+    margin-top: 15px;
+    padding: .2em .3em .3em;
+    border:0;
+    background:rgba(255,255,255,.2);/*它不是按钮而是混合控件，所以主要设置颜色字体*/
+}
+#Button1 {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15px;
+    margin-left:5px;
+    padding: .2em .3em .3em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+    background:rgba(255,255,255,.4);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    width: 100px;
+}
+    #Button1:hover { 
+        background:rgba(255,255,255,.6);
+    }
+/*gridview样式*/
+/*table、a 等标签实现覆盖自带的grid view 样式*/
+table { 
+    font-size:20px;
+    background-color:rgba(255, 255, 255, 0.1);
+    text-align:center;
+    width:68%;
+    margin-left:16%;
+    margin-top:30px;
+    /*想尽办法挽回margin的无效，但一个个设置又有效了*/
+    table-layout:fixed;/*单元格自动平均分配宽度，也顺带解决了底部页码混乱的问题*/
+}
+    tr:nth-child(odd){background:rgba(255, 255, 255, 0.3)}
+    /*伪类实现隔行变色，odd 是奇数行，even偶数行
+        但会在原有的颜色上叠加，如页码部分又嵌套了一个表格，第一行背景色又是深色，
+        所以能看到该表格内的背景色更深一层*/
+    th { 
+        padding:7px;
+    }
+    td { 
+        padding:5px;
+        background-color:transparent;
+        /*word-wrap:break-word;自动换行，*/
+    }
+   
